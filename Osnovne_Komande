@@ -1,0 +1,24 @@
+                               --install
+sudo apt install mysql-server
+
+                               --status engine-a
+sudo service mysql status
+
+                               -- START / STOP / RESTART
+sudo service mysqld stop
+sudo service mysqld start
+sudo service mysqld restart
+
+                               --D
+sudo service mysql stop
+sudo service mysql start
+sudo service mysql restart
+
+                               --network status
+sudo ss -tap | grep mysql
+
+                               --da bi se ulogovao
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+
+--
+flush privileges
