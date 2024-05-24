@@ -1,0 +1,8 @@
+
+mysql -u root -p
+
+CREATE USER 'user1'@'host' IDENTIFIED WITH authentication_plugin BY 'password1';
+
+
+
+
