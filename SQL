@@ -137,6 +137,36 @@ BEGIN
    END
 
 
+
+
+CREATE PROCEDURE sp2 (x VARCHAR(5))
+BEGIN
+  declare xname VARCHAR(5) DEFAULT 'bob';
+  declare newname VARCHAR(5);
+  declare xid INT;
+  
+  DECLARE done TINYINT DEFAULT 0;                --<
+  
+  DECLARE cur1 CURSOR FOR SELECT xname, id FROM table1; --< declare cursor
+  
+  DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1; --<contunue handler
+
+  OPEN cur1;                                    --< open cursor
+
+    read_loop: LOOP                             --< read loop
+
+    FETCH FROM cur1 INTO newname, xid;          --< fetch 
+    
+    IF done THEN LEAVE read_loop; END IF;       --< leave loop 
+    
+    SELECT newname;
+  
+  END LOOP;                                     --< end loop
+
+  CLOSE cur1;                                   --< close cursor
+END;
+
+
 ----------------------------------------------------dictionary tabele
 
 
