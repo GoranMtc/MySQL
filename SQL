@@ -167,8 +167,60 @@ BEGIN
 END;
 
 
+----------------------------------------------------------comments
+mysql> SELECT 1+1;     # This comment continues to the end of line
+mysql> SELECT 1+1;     -- This comment continues to the end of line
+mysql> SELECT 1    /* this is an in-line comment */ + 1;
+mysql> SELECT 1+
+
+/*
+this is a 
+multiple-line 
+comment
+*/
+
+
+----------------------------------------------------partition
+CREATE TABLE t1 (
+    id INT,
+    year_col INT
+)
+PARTITION BY RANGE (year_col) (
+    PARTITION p0 VALUES LESS THAN (1991),
+    PARTITION p1 VALUES LESS THAN (1995),
+    PARTITION p2 VALUES LESS THAN (1999)
+);
+
+
+--discard and import
+ALTER TABLE t1 DISCARD PARTITION p2, p3 TABLESPACE;
+
+ALTER TABLE t1 IMPORT PARTITION p2, p3 TABLESPACE;
+
+ALTER TABLE t1 TRUNCATE PARTITION p0;
+
+
+ALTER TABLE t1 
+add partition ( PARTITION p3 VALUES LESS THAN (2002) );
+
+
+ALTER TABLE t1
+    PARTITION BY HASH(id)
+    PARTITIONS 8;
+
+ALTER TABLE t1 COALESCE PARTITION 2;
+
+
+
+
+
 ----------------------------------------------------dictionary tabele
 
+
+----------------------------------information_schema.partitions
+select PARTITION_NAME, TABLE_ROWS
+FROM INFORMATION_SCHEMA.PARTITIONS
+WHERE TABLE_NAME = 't1';
 
 ----------------------------------user_variables_by_thread
 select t.* 
