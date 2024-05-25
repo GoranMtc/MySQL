@@ -18,21 +18,18 @@ BEGIN
 
 END;
 
-
 ----------------------------------------------------------REPEAT UNTIL
 create procedure DoRepeat( p1 int )
 BEGIN
     SET @x = 0;
 
     REPEAT                    --< repeat
-      SET @x = @x + 1;
+      set @x = @x + 1;
     UNTIL @x > p1 END REPEAT; --< until, end repeat
 
 END
 
-
-
--------------------------------------------------------- IF ELSEIF ELSE END
+---------------------------------------------------------IF ELSEIF ELSE END
 DELIMITER //
 
 CREATE FUNCTION SimpleCompare(n int, m int)
@@ -72,9 +69,7 @@ create procedure p()
         END;                     --< end
     END CASE;                    --< end case
 
-  END;
-
-
+end;
 
 -------------------------------------------------------WHILE
 create procedure DoWhile()
@@ -86,6 +81,71 @@ begin
     set v1 = v1 - 1;
   END WHILE;              --< end while
 end;
+
+-------------------------------------------------------CONDITION, CONTINUE HANDLER
+declare no_such_table CONDITION FOR 1051;
+declare CONTINUE HANDLER FOR no_such_table
+  begin
+    -- body of handler
+  end;
+
+----------------------------------------------------CURSOR
+CREATE PROCEDURE myProc (in_customer_id INT)
+BEGIN
+    DECLARE l_first_name        varchar(30);
+    DECLARE l_id                int;
+    DECLARE l_city              varchar(30);
+    DECLARE no_more_departments int;
+    
+    DECLARE dept_csr CURSOR FOR
+        select id,first_name, city
+        from employee;
+    
+    DECLARE CONTINUE HANDLER FOR NOT FOUND    --< contnue handler for not found
+    SET no_more_departments=1;
+    
+    SET no_more_departments=0;
+    OPEN dept_csr;
+    REPEAT
+      FETCH dept_csr INTO l_id,l_first_name,l_city;
+    
+      select l_id;
+      select l_first_name;
+      select l_city;
+    
+    UNTIL no_more_departments
+    END REPEAT;
+    
+   CLOSE dept_csr;
+   
+   SET no_more_departments=0;
+    
+   END
+
+
+----------------------------------------------------dictionary tabele
+
+
+----------------------------------user_variables_by_thread
+select t.* 
+from user_variables_by_thread  t;
+
+
+
+----------------------------------------------------system variables
+
+
+
+----------------------------------------------------transaction
+START TRANSACTION;                                  --< start tranasction
+
+select @A:=sum(salary) from table1 where type=1;
+update table2 set summary=@A where type=1;          --< dml
+
+COMMIT;                                             --< commit
+
+
+
 
 
 
