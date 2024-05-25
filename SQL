@@ -103,7 +103,7 @@ declare CONTINUE HANDLER FOR no_such_table
     -- body of handler
   end;
 
-----------------------------------------------------CURSOR
+-------------------------------------------------------CURSOR
 CREATE PROCEDURE myProc (in_customer_id INT)
 BEGIN
     DECLARE l_first_name        varchar(30);
@@ -135,8 +135,6 @@ BEGIN
    SET no_more_departments=0;
     
    END
-
-
 
 
 CREATE PROCEDURE sp2 (x VARCHAR(5))
@@ -178,6 +176,18 @@ this is a
 multiple-line 
 comment
 */
+
+
+----------------------------------------------------CTE
+WITH RECURSIVE cte (n) as
+(
+  select 1
+  union all
+  select n + 1 
+  from cte 
+  where n < 5
+)
+select * from cte;
 
 
 ----------------------------------------------------partition
