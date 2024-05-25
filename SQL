@@ -1,4 +1,18 @@
 
+
+---------------------------------------------
+CREATE PROCEDURE sp1 (x VARCHAR(5))
+BEGIN
+  declare xname VARCHAR(5) DEFAULT 'bob';  --< declare, default
+  declare newname VARCHAR(5);
+  declare xid INT;
+
+  SELECT xname, id INTO newname, xid       --< select into variable
+    FROM table1 WHERE xname = xname;
+  
+  SELECT newname;                          --< select variable
+END;
+
 ---------------------------------------------LOOP
 CREATE PROCEDURE procedure1(p1 int)
 BEGIN
@@ -144,7 +158,7 @@ update table2 set summary=@A where type=1;          --< dml
 
 COMMIT;                                             --< commit
 
-
+ROLLBACK;
 
 
 
