@@ -1,8 +1,77 @@
 
 mysql -u root -p
 
-CREATE USER 'user1'@'host' IDENTIFIED WITH authentication_plugin BY 'password1';
-
+CREATE USER 'user1'@'%' IDENTIFIED BY 'password1';
+GRANT Create role ON *.* TO 'user1'@'%';
+GRANT Create user ON *.* TO 'user1'@'%';
+GRANT Drop role ON *.* TO 'user1'@'%';
+GRANT Event ON *.* TO 'user1'@'%';
+GRANT File ON *.* TO 'user1'@'%';
+GRANT Process ON *.* TO 'user1'@'%';
+GRANT Reload ON *.* TO 'user1'@'%';
+GRANT Replication client ON *.* TO 'user1'@'%';
+GRANT Replication slave ON *.* TO 'user1'@'%';
+GRANT Show databases ON *.* TO 'user1'@'%';
+GRANT Shutdown ON *.* TO 'user1'@'%';
+GRANT Super ON *.* TO 'user1'@'%';
+GRANT Create tablespace ON *.* TO 'user1'@'%';
+GRANT Usage ON *.* TO 'user1'@'%';
+GRANT FIREWALL_EXEMPT ON *.* TO 'user1'@'%';
+GRANT AUDIT_ABORT_EXEMPT ON *.* TO 'user1'@'%';
+GRANT XA_RECOVER_ADMIN ON *.* TO 'user1'@'%';
+GRANT TELEMETRY_LOG_ADMIN ON *.* TO 'user1'@'%';
+GRANT TABLE_ENCRYPTION_ADMIN ON *.* TO 'user1'@'%';
+GRANT SYSTEM_VARIABLES_ADMIN ON *.* TO 'user1'@'%';
+GRANT FLUSH_STATUS ON *.* TO 'user1'@'%';
+GRANT CONNECTION_ADMIN ON *.* TO 'user1'@'%';
+GRANT ENCRYPTION_KEY_ADMIN ON *.* TO 'user1'@'%';
+GRANT INNODB_REDO_LOG_ARCHIVE ON *.* TO 'user1'@'%';
+GRANT CLONE_ADMIN ON *.* TO 'user1'@'%';
+GRANT BINLOG_ENCRYPTION_ADMIN ON *.* TO 'user1'@'%';
+GRANT FLUSH_TABLES ON *.* TO 'user1'@'%';
+GRANT BACKUP_ADMIN ON *.* TO 'user1'@'%';
+GRANT AUTHENTICATION_POLICY_ADMIN ON *.* TO 'user1'@'%';
+GRANT REPLICATION_APPLIER ON *.* TO 'user1'@'%';
+GRANT GROUP_REPLICATION_STREAM ON *.* TO 'user1'@'%';
+GRANT REPLICATION_SLAVE_ADMIN ON *.* TO 'user1'@'%';
+GRANT FLUSH_OPTIMIZER_COSTS ON *.* TO 'user1'@'%';
+GRANT SESSION_VARIABLES_ADMIN ON *.* TO 'user1'@'%';
+GRANT APPLICATION_PASSWORD_ADMIN ON *.* TO 'user1'@'%';
+GRANT SYSTEM_USER ON *.* TO 'user1'@'%';
+GRANT RESOURCE_GROUP_ADMIN ON *.* TO 'user1'@'%';
+GRANT AUDIT_ADMIN ON *.* TO 'user1'@'%';
+GRANT FLUSH_USER_RESOURCES ON *.* TO 'user1'@'%';
+GRANT GROUP_REPLICATION_ADMIN ON *.* TO 'user1'@'%';
+GRANT INNODB_REDO_LOG_ENABLE ON *.* TO 'user1'@'%';
+GRANT PASSWORDLESS_USER_ADMIN ON *.* TO 'user1'@'%';
+GRANT ROLE_ADMIN ON *.* TO 'user1'@'%';
+GRANT BINLOG_ADMIN ON *.* TO 'user1'@'%';
+GRANT PERSIST_RO_VARIABLES_ADMIN ON *.* TO 'user1'@'%';
+GRANT RESOURCE_GROUP_USER ON *.* TO 'user1'@'%';
+GRANT SENSITIVE_VARIABLES_OBSERVER ON *.* TO 'user1'@'%';
+GRANT SERVICE_CONNECTION_ADMIN ON *.* TO 'user1'@'%';
+GRANT SHOW_ROUTINE ON *.* TO 'user1'@'%';
+GRANT SET_USER_ID ON *.* TO 'user1'@'%';
+GRANT Grant option ON *.* TO 'user1'@'%';
+GRANT Alter ON *.* TO 'user1'@'%';
+GRANT Create ON *.* TO 'user1'@'%';
+GRANT Create view ON *.* TO 'user1'@'%';
+GRANT Delete ON *.* TO 'user1'@'%';
+GRANT Drop ON *.* TO 'user1'@'%';
+GRANT Grant option ON *.* TO 'user1'@'%';
+GRANT Index ON *.* TO 'user1'@'%';
+GRANT Insert ON *.* TO 'user1'@'%';
+GRANT References ON *.* TO 'user1'@'%';
+GRANT Select ON *.* TO 'user1'@'%';
+GRANT Show view ON *.* TO 'user1'@'%';
+GRANT Trigger ON *.* TO 'user1'@'%';
+GRANT Update ON *.* TO 'user1'@'%';
+GRANT Alter routine ON *.* TO 'user1'@'%';
+GRANT Create routine ON *.* TO 'user1'@'%';
+GRANT Create temporary tables ON *.* TO 'user1'@'%';
+GRANT Execute ON *.* TO 'user1'@'%';
+GRANT Lock tables ON *.* TO 'user1'@'%';
+GRANT Grant option ON *.* TO 'user1'@'%';
 
 
 
