@@ -1,1 +1,91 @@
 
+---------------------------------------------LOOP
+CREATE PROCEDURE procedure1(p1 int)
+BEGIN
+    label1: LOOP         --< label , loop
+    
+`   set p1 = p1 + 1;
+
+    if p1 < 10 then
+      ITERATE label1;    --< iterate
+    end if;
+
+    LEAVE label1;        --< leave
+  
+    END LOOP label1;     --< end loop
+
+    set @x = p1;
+
+END;
+
+
+----------------------------------------------------------REPEAT UNTIL
+create procedure DoRepeat( p1 int )
+BEGIN
+    SET @x = 0;
+
+    REPEAT                    --< repeat
+      SET @x = @x + 1;
+    UNTIL @x > p1 END REPEAT; --< until, end repeat
+
+END
+
+
+
+-------------------------------------------------------- IF ELSEIF ELSE END
+DELIMITER //
+
+CREATE FUNCTION SimpleCompare(n int, m int)
+  RETURNS VARCHAR(20)
+
+  BEGIN
+    declare s varchar(20);
+
+    IF n > m then set s = '>';           --< if
+    
+    ELSEIF n = m THEN set s = '=';       --< elseif
+    
+    ELSE set s = '<';                    --< else
+    
+    END IF;                              --< end if
+
+    SET s = CONCAT(n, ' ', s, ' ', m);
+
+    RETURN s;
+  END //
+
+DELIMITER ;
+
+---------------------------------------------------------CASE
+create procedure p()
+  begin
+    declare v int default 1;
+
+    CASE v                       --< case
+      WHEN 2 THEN SELECT v;      --< when then select
+
+      WHEN 3 THEN SELECT 0;      --< when then select
+
+      ELSE                       --< else
+        BEGIN                    --< begin
+          
+        END;                     --< end
+    END CASE;                    --< end case
+
+  END;
+
+
+
+-------------------------------------------------------WHILE
+create procedure DoWhile()
+begin
+  declare v1 int default 5;
+
+  WHILE v1 > 0 do         --< while do
+    ...
+    set v1 = v1 - 1;
+  END WHILE;              --< end while
+end;
+
+
+
